@@ -17,7 +17,7 @@ export const deleteCategory = catchError(async (req,res,next)=>{
 })
 
 export const getAllCategories = catchError(async (req,res,next)=>{
-
+    
 })
 
 export const deleteAllCategories = catchError(async (req,res,next)=>{
