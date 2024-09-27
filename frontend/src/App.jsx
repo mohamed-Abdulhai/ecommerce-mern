@@ -1,3 +1,5 @@
+import { Navbar } from "./components/Navbar"
+import { Sginin } from "./pages/Signin"
 
 
 const App = ()=> {
@@ -5,9 +7,8 @@ const App = ()=> {
 
   return (
     <>
-      <div>
-        <h1 className="underline">Hello world!</h1>
-      </div>
+      <Navbar />
+      <Sginin />
     </>
   )
 }
