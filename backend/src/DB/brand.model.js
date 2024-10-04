@@ -1,17 +1,20 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
-    name:{
-        type:String,
-        minLength:[3,'Minimum is 3 letters'],
-        maxLength:[200,'Maximum is 200 letters'],
+    name: {
+        type: String,
+        minLength: [3, 'Minimum is 3 letters'],
+        maxLength: [200, 'Maximum is 200 letters'],
+        unique:true,
+        trim:true
     },
-    logo:String,
-    addedBy:{
-        type:mongoose.Types.ObjectId,
-        ref:'User',
-        required:[true,'CreatedBy is required']
+    logo: String,
+    logoPublicId: String, 
+    addedBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'CreatedBy is required']
     },
-},{timestamps:true})
+}, { timestamps: true });
 
-export const brandModel = mongoose.model('Brand',schema)
+export const brandModel = mongoose.model('Brand', schema);

@@ -5,8 +5,9 @@ export const catchError= (fn)=>{
 }
 
 export class AppError extends Error{
-    constructor(message ,status){
+    constructor(message ,statusCode,status){
         super(message)
+        this.statusCode = statusCode
         this.status = status
     }
 }

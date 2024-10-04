@@ -6,7 +6,7 @@ export const validate = (schema) => {
       if (error) {
         const { details } = error;
         const messages = details.map(i => i.message);
-       next(new AppError(messages,403))
+       next(new AppError(messages,403,'failed'))
       }
       next();
     };

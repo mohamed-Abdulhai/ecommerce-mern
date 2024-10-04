@@ -6,7 +6,8 @@ const schema = new mongoose.Schema({
         minLength:[3,'minimum is 3 letters'],
         maxLength:[200,'maximum is 200 letters'],
         trim:true,
-        required:[true,'The title is required']
+        required:[true,'The title is required'],
+        unique:true
     },
     slug:{
         type:String,
@@ -52,10 +53,10 @@ const schema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'Brand'
     },
-    createdBy:{
+    addedBy:{
         type:mongoose.Types.ObjectId,
         ref:'User',
-        required:[true,'CreatedBy is required']
+        required:[true,'AddedBy is required']
     },
 },{timestamps:true})
 

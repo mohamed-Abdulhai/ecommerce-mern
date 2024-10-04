@@ -15,6 +15,10 @@ const schema = new mongoose.Schema({
         maxLength:[50,'maximum is 50 letters'],
         required:[true,'The last name is required']
     },
+    userName:{
+        type:String,
+        trim:true
+    },
     email:{
         type:String,
         trim:true,
@@ -54,5 +58,10 @@ const schema = new mongoose.Schema({
     DOB:String,
     image:String
 },{timestamps:true})
+
+schema.pre('save', function (next) {
+    this.userName = `${this.firstName} ${this.lastName}`;
+    next();
+});
 
 export const userModel = mongoose.model('User',schema)

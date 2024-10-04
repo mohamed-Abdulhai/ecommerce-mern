@@ -1,15 +1,16 @@
 import { Router } from "express";
-import { forgetPassword, logout, signin, signup } from "./auth.controller.js";
-import { emailChecker, hashPassword, phoneChecker } from "./auth.middleware.js";
+import { forgetPassword, logout, signin, signup, verifyEmail } from "./auth.controller.js";
+import { authentication, emailChecker, hashPassword, isConfirmed, phoneChecker } from "./auth.middleware.js";
 import { validate } from "../../middlewares/validation.js";
-import { signinSchema, signupSchema } from "./auth.validation.js";
+import { signinSchema, signupSchema, verifyEmailSchema } from "./auth.validation.js";
 
 const router = Router()
 
 router.post('/signup',validate(signupSchema),emailChecker,phoneChecker,hashPassword,signup)
-router.post('/signin',validate(signinSchema),signin)
-router.post('/logout',logout)
+router.post('/signin',validate(signinSchema),isConfirmed,signin)
+router.get('/logout',authentication,logout)
 router.post('/forget-password',forgetPassword)
+router.get('/verify/:token',validate(verifyEmailSchema),verifyEmail)
 
 
 export default router

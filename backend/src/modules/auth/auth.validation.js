@@ -39,3 +39,7 @@ export const signinSchema = Joi.object({
         'string.empty': 'Password is required.',
     }),
 })
+
+export const verifyEmailSchema = Joi.object({
+    token:Joi.string().required().messages({'any.required': `"token" is required`})
+})
