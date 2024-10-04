@@ -67,7 +67,10 @@ export const changePassword = catchError(async (req,res,next)=>{
 
 
 export const forgetPassword = catchError(async (req,res,next)=>{
-    
+    const {email} = req.body
+    if(!email) return next(new AppError("Enter you're email",403,'failed'))
+    const user = await userModel.findOne(email)
+    if(!user) return next(new AppError('Email not found',404,'failed'))
 })
 
 export const resetPassword = catchError(async (req,res,next)=>{

@@ -10,6 +10,7 @@ router.post('/signup',validate(signupSchema),emailChecker,phoneChecker,hashPassw
 router.post('/signin',validate(signinSchema),isConfirmed,signin)
 router.get('/logout',authentication,logout)
 router.post('/forget-password',forgetPassword)
+router.post('/reset-password/:toekn')
 router.get('/verify/:token',validate(verifyEmailSchema),verifyEmail)
 
 
